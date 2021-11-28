@@ -1,0 +1,42 @@
+subprojects {
+    apply plugin: "java"
+    apply plugin: "jacoco"
+    apply plugin: 'io.spring.dependency-management'
+
+    sourceCompatibility = JavaVersion.VERSION_11
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test
+        testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.6.0'
+
+        // https://mvnrepository.com/artifact/io.projectreactor/reactor-test
+        testImplementation group: 'io.projectreactor', name: 'reactor-test', version: '3.4.12'
+
+
+        // https://mvnrepository.com/artifact/io.projectreactor/reactor-core
+        implementation group: 'io.projectreactor', name: 'reactor-core', version: '3.4.12'
+        // https://mvnrepository.com/artifact/io.projectreactor.addons/reactor-extra
+        implementation group: 'io.projectreactor.addons', name: 'reactor-extra', version: '3.4.5'
+
+        compileOnly 'org.projectlombok:lombok:1.18.22'
+        annotationProcessor 'org.projectlombok:lombok:1.18.22'
+
+        testCompileOnly 'org.projectlombok:lombok:1.18.22'
+        testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
+    }
+
+    jacoco {
+        toolVersion = '0.8.2'
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        }
+    }
+}

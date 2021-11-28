@@ -1,0 +1,10 @@
+dependencies {
+
+    implementation project(':domain-controller')
+    implementation project(':domain-aif')
+    implementation 'org.reactivecommons:async-commons-api:0.4.7'
+    implementation 'org.reactivecommons:async-commons-starter:0.4.7'
+    implementation 'org.reactivecommons.utils:object-mapper:0.1.0'
+    implementation 'org.springframework:spring-context'
+    implementation 'org.reactivecommons.utils:object-mapper:0.1.0'
+}
